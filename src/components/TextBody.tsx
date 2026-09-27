@@ -1,10 +1,11 @@
 'use client'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-// Umgebrochene Verse fallen als Treppe die Seite hinunter. Würde die Treppe mehr
-// als MAX_STUFEN Stufen bekommen, bleibt es beim hängenden Einzug.
+// Umgebrochene Verse fallen als Treppe die Seite hinunter. Ab der MAX_STUFEN-ten Stufe
+// geht es nicht tiefer, weitere Zeilen bleiben auf dieser Höhe.
 const STUFE_EM = 0.9
 const MAX_STUFEN = 6
+const tiefe = (j: number) => Math.min(j, MAX_STUFEN - 1)
 
 type Layout = (string[] | null)[]
 
@@ -23,9 +24,8 @@ function treppe(line: string, width: number, step: number, measure: (s: string) 
   let current = ''
   for (const w of words) {
     const next = current ? `${current} ${w}` : w
-    if (current && measure(next) > width - stufen.length * step) {
+    if (current && measure(next) > width - tiefe(stufen.length) * step) {
       stufen.push(current)
-      if (stufen.length >= MAX_STUFEN) return null
       current = w
     } else {
       current = next
@@ -95,7 +95,7 @@ export default function TextBody({ content }: { content: string }) {
         return (
           <div key={i}>
             {stufen.map((s, j) => (
-              <div key={j} className="stufe" style={{ paddingLeft: `${j * STUFE_EM}em` }}>{s}</div>
+              <div key={j} className="stufe" style={{ paddingLeft: `${tiefe(j) * STUFE_EM}em` }}>{s}</div>
             ))}
           </div>
         )
