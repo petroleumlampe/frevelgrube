@@ -387,18 +387,14 @@ a:hover {
   gap: 2rem;
 }
 
-.gedicht-lines {
+.text-content.gedicht-lines {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-}
-
-.gedicht-line {
   font-family: 'EB Garamond', serif;
   font-size: 1.1rem;
   line-height: 1.85;
   color: var(--text);
-  margin: 0;
 }
 
 .gedicht-subtitle {

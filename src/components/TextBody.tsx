@@ -35,13 +35,14 @@ function treppe(line: string, width: number, step: number, measure: (s: string) 
   return stufen.length > 1 ? stufen : null
 }
 
-export default function TextBody({ content }: { content: string }) {
+// immerLyrik: für generierte Gedichte ("worte"), die nie Prosa sind
+export default function TextBody({ content, immerLyrik = false, className = '' }: { content: string; immerLyrik?: boolean; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const [layout, setLayout] = useState<Layout>([])
   // Text bleibt unsichtbar, bis die Treppe mit der richtigen Schrift berechnet ist.
   const [ready, setReady] = useState(false)
   const lines = useMemo(() => content.split('\n'), [content])
-  const prosa = useMemo(() => isProsa(lines), [lines])
+  const prosa = useMemo(() => !immerLyrik && isProsa(lines), [lines, immerLyrik])
 
   useEffect(() => {
     const el = ref.current
@@ -86,7 +87,7 @@ export default function TextBody({ content }: { content: string }) {
   }, [lines, prosa])
 
   return (
-    <div className={`text-content${prosa ? ' prosa' : ''}${ready ? ' bereit' : ''}`} ref={ref}>
+    <div className={`text-content${prosa ? ' prosa' : ''}${ready ? ' bereit' : ''}${className ? ` ${className}` : ''}`} ref={ref}>
       <noscript><style>{'.text-content { opacity: 1; }'}</style></noscript>
       {lines.map((line, i) => {
         if (!line.trim()) return <div key={i} className="leerzeile" />

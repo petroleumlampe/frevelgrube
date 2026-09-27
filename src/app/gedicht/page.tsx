@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
+import TextBody from '@/components/TextBody'
 
 export default function GedichtPage() {
   const [lines, setLines] = useState<string[]>([])
@@ -22,15 +23,11 @@ export default function GedichtPage() {
   return (
     <div className="gedicht-page">
       <p className="gedicht-subtitle">zufällige neukomposition von hier hochgeladenen worten</p>
-      <div className="gedicht-lines">
-        {loading ? (
-          <span className="gedicht-loading">·  ·  ·</span>
-        ) : (
-          lines.map((line, i) => (
-            <p key={i} className="gedicht-line">{line}</p>
-          ))
-        )}
-      </div>
+      {loading ? (
+        <span className="gedicht-loading">·  ·  ·</span>
+      ) : (
+        <TextBody content={lines.join('\n')} immerLyrik className="gedicht-lines" />
+      )}
     </div>
   )
 }
