@@ -18,8 +18,8 @@ möglich, die zähe kleberei zu lösen.
 wenn du könntest, du dürftest es wirklich
 tun und mir die haut abziehen, heute
 will ich hier raus oder endlich, mit dem
-gefühl eines schnalzenden frischgeöffneten
-bieres, in mich selbst einrasten.
+gefühl einer schnalzenden frischgeöffneten
+flasche, in mich selbst einrasten.
 
 warum diese extreme?
 warum ist heute jeder klang der eintritt
