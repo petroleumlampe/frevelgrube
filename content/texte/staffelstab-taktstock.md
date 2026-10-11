@@ -2,7 +2,7 @@
 title: "staffelstab + taktstock"
 date: "2021-04-24"
 ---
-die pure dunkelheit trübt nur das abgestandene gelbe licht der laterne draußen, das ein viertel meines fenster verziert und auch in die andere wandseite fräst.
+die pure dunkelheit trübt nur das abgestandene gelbe licht der laterne draußen, das ein viertel meines fensters verziert und auch in die andere wandseite fräst.
 
 ohne die nacht hätte nichts beginnen können. aber ich liege falsch in ihr, wach, hoffe auf die feste, doch unmerkliche umarmung der dämmerung.
 
