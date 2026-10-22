@@ -15,7 +15,7 @@ nicht verlogen erscheint, sondern stolz
 mal wohlig eingemurmelt und
 in manchen passagen befremdlich umfingert
 wickelt sich beidseitig klebend rund
-um mich ein band, das lodernd schillert
+um mich ein text, der lodernd schillert
 
 wenn alle winzigen haare der brauen
 sich wie kompassnadeln gen bosheit wenden
