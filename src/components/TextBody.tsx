@@ -10,12 +10,18 @@ const tiefe = (j: number) => Math.min(j, MAX_STUFEN - 1)
 type Layout = (string[] | null)[]
 
 // Prosa bekommt weder Treppe noch Einzug. Als Prosa gilt ein Text nur, wenn mindestens zwei Drittel
-// seiner Zeilen lange Absätze mit mehreren Sätzen sind; im Zweifel ist es Lyrik.
+// seiner Zeichen in langen Absätzen mit mehreren Sätzen stehen. Gezählt werden Zeichen statt Zeilen,
+// damit ein einziger langer Absatz mit kurzer Grußzeile Prosa bleibt. Unter MIN_PROSA Zeichen ist
+// ein Absatz nicht von einem langen Vers zu unterscheiden; im Zweifel ist es Lyrik.
+const MIN_PROSA = 300
+
 function isProsa(lines: string[]): boolean {
   const filled = lines.map(l => l.trim()).filter(Boolean)
-  if (filled.length < 3) return false
+  const zeichen = (ls: string[]) => ls.reduce((n, l) => n + l.length, 0)
+  const gesamt = zeichen(filled)
+  if (gesamt < MIN_PROSA) return false
   const absaetze = filled.filter(l => l.length > 120 && (l.match(/[.!?:;] +\S/g) ?? []).length >= 2)
-  return absaetze.length / filled.length >= 2 / 3
+  return zeichen(absaetze) / gesamt >= 2 / 3
 }
 
 function treppe(line: string, width: number, step: number, measure: (s: string) => number): string[] | null {
